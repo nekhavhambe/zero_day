@@ -1,3 +1,5 @@
+alert('hi')
+
 function reconcileArrays(arrayOne, arrayTwo) {
     let reconciledArrayTwo = arrayTwo.map(item => ({ ...item, matched: false }));
 
