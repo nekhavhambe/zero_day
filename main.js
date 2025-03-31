@@ -1,4 +1,4 @@
-alert('hi')
+alert('hi-'+ window.session_)
 console.log(window.session_)
 
 function reconcileArrays(arrayOne, arrayTwo) {
