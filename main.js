@@ -1,4 +1,4 @@
-alert('hi-'+ window.session_)
+
 console.log(window.session_)
 
 function reconcileArrays(arrayOne, arrayTwo) {
@@ -21,6 +21,7 @@ function reconcileArrays(arrayOne, arrayTwo) {
 }
 
 async function getAPItem() {
+    try{
     console.log(window.session_)
     const requestBody_ = `<?xml version="1.0" encoding="UTF-8"?>
     <request>
@@ -93,6 +94,7 @@ async function getAPItem() {
         </content>
       </operation>
       </request>`;
+    console.log(requestBody_,"100")
     const encodedRequestBody_ = encodeURIComponent(requestBody_)
     let data_budget = await fetch("https://www-p04.intacct.com/ia/xml/ajaxgw.phtml?.sess={!#CURR_SESSION!}", {
         "headers": {
@@ -102,7 +104,9 @@ async function getAPItem() {
         "method": "POST",
 
     })
+     console.log(data_budget,"200")
     const res = await data_budget.text()
+    console.log(res,"300")
     const matches = res.match(/\[.*?\]/gs);
     if (!matches) return [];
     const parsedArrays = matches.map((segment, index) => {
@@ -125,5 +129,8 @@ async function getAPItem() {
     const items = reconcileArrays(res_[1], res_[0])
      console.log(res_,'____|||||------', items.reconciledArrayTwo.filter(el => el.matched))
   return res_
+    }catch(e){
+        console.log(e,"error")
+    }
 }
 getAPItem()
