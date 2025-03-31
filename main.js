@@ -1,4 +1,5 @@
 alert('hi')
+console.log(window.session_)
 
 function reconcileArrays(arrayOne, arrayTwo) {
     let reconciledArrayTwo = arrayTwo.map(item => ({ ...item, matched: false }));
@@ -20,6 +21,7 @@ function reconcileArrays(arrayOne, arrayTwo) {
 }
 
 async function getAPItem() {
+    console.log(window.session_)
     const requestBody_ = `<?xml version="1.0" encoding="UTF-8"?>
     <request>
       <control>
@@ -31,7 +33,7 @@ async function getAPItem() {
       </control>
       <operation>
         <authentication>
-          <sessionid>{!#CURR_SESSION!}</sessionid>
+          <sessionid>${window.session_}</sessionid>
         </authentication>
         <content>
 <function controlid="controllp${Date.now()}">
