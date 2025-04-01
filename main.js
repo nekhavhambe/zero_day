@@ -96,7 +96,7 @@ async function getAPItem() {
       </request>`;
     console.log(requestBody_,"100")
     const encodedRequestBody_ = encodeURIComponent(requestBody_)
-    let data_budget = await fetch("https://www-p04.intacct.com/ia/xml/ajaxgw.phtml?.sess={!#CURR_SESSION!}", {
+    let data_budget = await fetch(`https://www-p04.intacct.com/ia/xml/ajaxgw.phtml?.sess=${window.session_}`, {
         "headers": {
             "content-type": "application/x-www-form-urlencoded",
         },
